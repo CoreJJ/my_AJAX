@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		h3 {
+			font-size: 28px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h3>XMLHttpRequest</h3>
+	<p id="result"></p>
+	<script>
+
+		var xhr = new XMLHttpRequest;
+
+		// 设置请求行，遵照HTTP协议需要有一个
+		xhr.open('post', '8-1.php');
+
+		// 设置请求头，遵照HTTP协议
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+		// 设置请求主体，遵照HTTP协议
+		xhr.send('name=chinaums&age=24');
+
+		// 每次请求都会有0-4状态
+	    // 能够正确处理数据，需要保证服务器状态码为200
+		xhr.onreadystatechange = function () {
+			if(xhr.readyState == 4&& xhr.status == 200) {
+				// 接收服务器返回的内容
+				var result = xhr.responseText;
+
+				// 通过DOM操作将数据添加到页面中去
+				document.getElementById('result').innerHTML = result;
+			}
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		h3 {
+			font-size: 28px;
+			text-align: center;
+
+			transition: all 2s;
+		}
+	</style>
+</head>
+<body>
+	<h3>XMLHttpRequest</h3>
+	<p id="result"></p>
+	<script>
+
+		var xhr = new XMLHttpRequest;
+        //设置请求行，这次使用get方式提交参数
+		xhr.open('get', '8-1.php');
+        //get方式不用设置请求头
+
+
+		xhr.send(null);
+
+		xhr.onreadystatechange = function () {
+			// 服务器状态码
+			console.log(xhr.status);
+			// 每次请求都会有0-4状态
+			// 能够正确处理数据，需要保证服务器状态码为200
+			if(xhr.readyState == 4 && xhr.status == 200) {
+				console.log(1);
+				console.log(xhr.responseText);
+			}
+		}
+	</script>
+</body>
+</html>

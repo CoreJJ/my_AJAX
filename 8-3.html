@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		h3 {
+			font-size: 28px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h3>XMLHttpRequest</h3>
+	<p id="result"></p>
+	<script>
+
+		var xhr = new XMLHttpRequest;
+
+		// 设置第三个参数，调整是否为异步
+		// 默认为true，即异步
+		// 设置为false 为同步，同步会阻塞进程,AJAX使用的是异步的方式
+		xhr.open('get', '8-3.php', false);
+
+		xhr.send(null);
+
+		// 同步执行会阻塞后续代码执行
+		// 并且不需要监听状态变化
+		console.log(xhr.responseText);
+
+		console.log('我被执行了');
+
+
+	</script>
+</body>
+</html>

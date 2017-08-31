@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		h3 {
+			font-size: 28px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h3>XMLHttpRequest</h3>
+	<p id="result"></p>
+	<script>
+
+		var xhr = new XMLHttpRequest;
+
+		xhr.open('post', '8-4.php');
+		// 当以get方式，发送数据时，将数据放到url后面
+		// 并且格式为url?key=val&key1=val1
+		// xhr.open('get', '8-4.php?name=chinaums&age=24&sex=男');
+
+		// 当请求方式为post时，需要设置Content-Type
+		// 当请求方式为get时，不必设置
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+		// 当以post方式请求时，参数放到XMLHttpRequest对象的send方法里
+		xhr.send('name1=chinaums&age=24&sex=男');
+		// 当请求方式为get时，在send方法里设置参数无效
+		// 一般情况下都写作null
+		// xhr.send(null);
+
+		xhr.onreadystatechange = function () {
+			if(xhr.readyState == 4 && xhr.status == 200) {
+				var result = xhr.responseText;
+
+				console.log(result);
+			}
+		}
+		
+	</script>
+</body>
+</html>
